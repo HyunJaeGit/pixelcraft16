@@ -6,7 +6,6 @@ import Toolbar from './Toolbar'
 import type { Tool } from './Toolbar'
 import StatusBar from './StatusBar'
 import ReferencePanel from './ReferencePanel'
-import { TEXT } from './i18n'
 import type { Lang } from './i18n'
 
 import {
