@@ -1,30 +1,34 @@
 # PixelCraft 16 (Beta)
 
-> **Beta Version**
+> ⚠️ **Beta Version**
 >
-> PixelCraft 16 **베타 버전(Beta)**입니다.  
-> 현재 버전은 **정적 웹 기반 픽셀 편집 툴**에 집중하며,
+> PixelCraft 16은 현재 **베타 버전(Beta)**입니다.  
+> 이 버전은 **정적 웹 기반 픽셀 편집 기능**에 집중합니다.
+>
 > 서버 API, 계정, 클라우드 저장, 확장 기능 등은  
 > **정식 배포(Stable Release) 버전에서 단계적으로 추가될 예정**입니다.
-> © 2026 팻킹(DevKay). All rights reserved.
-> ✔ 누구나 개인 / 비상업적 용도로 사용 가능
-✖ 소스 코드 무단 복사 금지
-✖ 무단 수정 금지
-✖ 재배포 금지
-✖ 상업적 사용 금지
-자세한 내용은 LICENSE 파일을 참고하세요.
-문의: fatking25@kakao.com
 
+---
 
-**16색 제한 픽셀 아이콘 메이커 (정적 웹 툴)**  
-React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니다.
+### 🔐 사용 및 권리 안내 (요약)
+
+© 2026 **팻킹(DevKay)**. All rights reserved.
+
+- ✔ 누구나 **개인 / 비상업적 용도**로 사용 가능
+- ✖ 소스 코드 무단 복사 금지
+- ✖ 무단 수정 금지
+- ✖ 재배포 금지
+- ✖ 상업적 사용 금지
+
+자세한 내용은 [`LICENSE`](./LICENSE) 파일을 참고하세요.  
+문의: **fatking25@kakao.com**
 
 ---
 
 ## 🔹 프로젝트 소개
 
 **PixelCraft 16**은  
-복잡한 기능을 제거하고, **빠르고 안정적인 픽셀 작업 경험**에 집중한  
+복잡한 기능을 배제하고, **빠르고 안정적인 픽셀 작업 경험**에 집중한  
 **16색 제한 픽셀 아이콘/스프라이트 제작 웹 툴**입니다.
 
 - 서버, 로그인, 계정 ❌ *(베타 버전에서는 미포함)*
@@ -36,16 +40,16 @@ React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니�
 
 ---
 
-## 🧪 베타 버전 범위 (현재)
+## 🧪 베타 버전 범위
 
-### 포함되는 것
-- 정적 웹 기반 픽셀 편집 기능
+### 포함되는 기능
+- 정적 웹 기반 픽셀 편집
 - LocalStorage 기반 자동 저장
 - PNG / JSON Export & Import
 - Undo / Redo
 - 한국어 / 영어 전환
 
-### ❌ 포함되지 않는 것 (정식 버전 예정)
+### ❌ 포함되지 않는 기능 (정식 버전 예정)
 - 서버 API
 - 사용자 계정 / 로그인
 - 클라우드 저장
@@ -60,7 +64,7 @@ React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니�
 
 ## ✨ 주요 기능
 
-### 🎨 편집 기능
+### 🎨 편집
 - 캔버스 크기: **16×16 / 32×32 / 64×64 / 128×128**
 - 고정 **16색 팔레트 + 커스텀 색상 1칸**
 - 도구
@@ -78,7 +82,7 @@ React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니�
 
 ### ⏪ 상태 관리
 - Undo / Redo (최소 20 스텝)
-- 단축키 지원
+- 단축키
   - Undo: `Ctrl + Z`
   - Redo: `Ctrl + Y` / `Ctrl + Shift + Z`
 
@@ -102,7 +106,7 @@ React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니�
 
 ### 배포
 - GitHub Pages (정적 호스팅)
-- 서버 / API / DB 사용 없음 (Beta 기준)
+- 서버 / API / DB 없음 (Beta 기준)
 
 ---
 
@@ -110,7 +114,7 @@ React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니�
 
 ```text
 src/
- ├─ core/        # 픽셀 엔진 (Pure TS)
+ ├─ core/        # 픽셀 엔진 (Pure TypeScript)
  │   ├─ pixelGrid.ts
  │   ├─ tools.ts
  │   ├─ undoStack.ts
