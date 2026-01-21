@@ -1,9 +1,9 @@
-# PixelCraft 16 (Beta)
+# PixelCraft 16 v0.1.0-beta
 
-> ⚠️ **Beta Version**
+> **Beta Version**
 >
-> PixelCraft 16은 현재 **베타 버전(Beta)**입니다.  
-> 이 버전은 **정적 웹 기반 픽셀 편집 기능**에 집중합니다.
+> PixelCraft 16은 현재 베타 버전(v0.1.0-beta)입니다.  
+> 이 버전은 **웹 기반 픽셀 편집 기능**에 집중합니다.
 >
 > 서버 API, 계정, 클라우드 저장, 확장 기능 등은  
 > **정식 배포(Stable Release) 버전에서 단계적으로 추가될 예정**입니다.
