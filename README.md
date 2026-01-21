@@ -1,5 +1,8 @@
 # PixelCraft 16 v0.1.0-beta
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen)](https://hyunjaegit.github.io/pixelcraft16/)
+
+
 > **Beta Version**
 >
 > PixelCraft 16은 현재 베타 버전(v0.1.0-beta)입니다.  
