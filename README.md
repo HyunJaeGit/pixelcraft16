@@ -1,11 +1,20 @@
 # PixelCraft 16 (Beta)
 
-> ⚠️ **Beta Version**
+> **Beta Version**
 >
-> 이 저장소의 PixelCraft 16은 **베타 버전(Beta)**입니다.  
+> PixelCraft 16 **베타 버전(Beta)**입니다.  
 > 현재 버전은 **정적 웹 기반 픽셀 편집 툴**에 집중하며,
 > 서버 API, 계정, 클라우드 저장, 확장 기능 등은  
 > **정식 배포(Stable Release) 버전에서 단계적으로 추가될 예정**입니다.
+> © 2026 팻킹(DevKay). All rights reserved.
+> ✔ 누구나 개인 / 비상업적 용도로 사용 가능
+✖ 소스 코드 무단 복사 금지
+✖ 무단 수정 금지
+✖ 재배포 금지
+✖ 상업적 사용 금지
+자세한 내용은 LICENSE 파일을 참고하세요.
+문의: fatking25@kakao.com
+
 
 **16색 제한 픽셀 아이콘 메이커 (정적 웹 툴)**  
 React + TypeScript + Vite 기반, 서버 없이 GitHub Pages에서 동작합니다.
