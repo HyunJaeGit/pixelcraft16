@@ -3,6 +3,8 @@ export type Lang = 'ko' | 'en'
 
 export const TEXT = {
   title: { ko: 'PixelCraft 16', en: 'PixelCraft 16' },
+  eraser: { ko: '지우개', en: 'Eraser' },
+  eraserSize: { ko: '지우개 크기', en: 'Eraser size' },
 
   fileName: { ko: '파일명', en: 'File name' },
 

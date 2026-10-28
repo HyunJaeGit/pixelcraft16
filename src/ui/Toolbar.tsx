@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { TEXT } from './i18n'
 import type { Lang } from './i18n'
 
-export type Tool = 'pencil' | 'fill' | 'eyedropper'
+export type Tool = 'pencil' | 'fill' | 'eraser' | 'eyedropper'
 
 type Props = {
   lang: Lang
@@ -14,6 +14,8 @@ type Props = {
 
   tool: Tool
   setTool: (t: Tool) => void
+  eraserSize: number
+  setEraserSize: (size: number) => void
 
   zoom: number
   setZoom: (z: number) => void
@@ -77,7 +79,23 @@ export default function Toolbar(props: Props) {
         >
           {TEXT.fill[props.lang]}
         </button>
+        <button
+          type="button"
+          onClick={() => props.setTool('eraser')}
+          style={{ padding: '6px 10px', border: props.tool === 'eraser' ? '2px solid #111' : '1px solid #bbb' }}
+        >
+          {TEXT.eraser[props.lang]}
+        </button>
       </div>
+
+      <label style={{ fontSize: 12 }}>
+        {TEXT.eraserSize[props.lang]}:{' '}
+        <select value={props.eraserSize} onChange={(e) => props.setEraserSize(Number(e.target.value))}>
+          {Array.from({ length: 16 }, (_, i) => i + 1).map((size) => (
+            <option key={size} value={size}>{size}px</option>
+          ))}
+        </select>
+      </label>
 
       <label style={{ fontSize: 12 }}>
         {TEXT.zoom[props.lang]}:{' '}

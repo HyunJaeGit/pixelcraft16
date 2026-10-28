@@ -112,6 +112,7 @@ export default function EditorPage() {
   const [pixels, setPixels] = useState<Uint32Array>(() => new Uint32Array(DEFAULT_SIZE * DEFAULT_SIZE))
 
   const [tool, setTool] = useState<Tool>('pencil')
+  const [eraserSize, setEraserSize] = useState<number>(1)
   const [colorIndex, setColorIndex] = useState<number>(0)
   const [zoom, setZoom] = useState<Zoom>(16)
   const [gridOn, setGridOn] = useState<boolean>(true)
@@ -243,6 +244,18 @@ export default function EditorPage() {
     if (tool === 'fill') {
       pushUndoOnce()
       applyFill(grid, x, y, mode === 'erase' ? 0x00000000 : currentColorArgb)
+      commitPixels(next)
+      return
+    }
+
+    if (tool === 'eraser' || mode === 'erase') {
+      pushUndoOnce()
+      const radius = Math.floor(eraserSize / 2)
+      for (let dy = 0; dy < eraserSize; dy++) {
+        for (let dx = 0; dx < eraserSize; dx++) {
+          applyPencil(grid, x + dx - radius, y + dy - radius, 0x00000000)
+        }
+      }
       commitPixels(next)
       return
     }
@@ -388,6 +401,8 @@ export default function EditorPage() {
         setFileName={setFileName}
         tool={tool}
         setTool={setTool}
+        eraserSize={eraserSize}
+        setEraserSize={setEraserSize}
         zoom={zoom}
         setZoom={(z) => setZoom(z as Zoom)}
         zoomOptions={ZOOMS}
@@ -427,6 +442,7 @@ export default function EditorPage() {
             zoom={zoom}
             gridOn={gridOn}
             tool={tool}
+            eraserSize={eraserSize}
             onStrokeStart={onStrokeStart}
             onStrokeEnd={onStrokeEnd}
             onGridPointer={onGridPointer}
