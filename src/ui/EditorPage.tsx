@@ -10,6 +10,7 @@ import type { Lang } from './i18n'
 
 import {
   CANVAS_SIZES,
+  MAX_PALETTE_COLORS,
   DEFAULT_SIZE,
   MAX_UNDO_STEPS,
   makeNewProject,
@@ -118,7 +119,6 @@ export default function EditorPage() {
   const [hover, setHover] = useState<{ x: number; y: number } | null>(null)
   const [refImageUrl, setRefImageUrl] = useState<string | null>(null)
 
-  const customHex = palette[16] ?? '#000000'
 
   const pixelsRef = useRef<Uint32Array>(pixels)
   useEffect(() => {
@@ -326,15 +326,39 @@ export default function EditorPage() {
     setFileName(sanitizeBaseName(file.name))
   }
 
-  function onChangeCustomHex(hex: string) {
+  function onChangePaletteColor(hex: string) {
     if (!isValidHex6(hex)) return
+    const normalized = hex.toLowerCase()
+    const duplicateIndex = palette.findIndex((color, index) => index !== colorIndex && color.toLowerCase() === normalized)
+    if (duplicateIndex >= 0) {
+      setColorIndex(duplicateIndex)
+      return
+    }
 
     setPalette((prev) => {
       const next = prev.slice()
-      if (next.length < 17) return prev
-      next[16] = hex
+      if (colorIndex >= next.length) return prev
+      next[colorIndex] = normalized
       return next
     })
+  }
+
+  function addPaletteColor(hex: string) {
+    const normalized = hex.toLowerCase()
+    const existing = palette.findIndex((color) => color.toLowerCase() === normalized)
+    if (existing >= 0) {
+      setColorIndex(existing)
+      return
+    }
+    if (palette.length >= MAX_PALETTE_COLORS) return
+    setPalette((current) => [...current, normalized])
+    setColorIndex(palette.length)
+  }
+
+  function removePaletteColor(index: number) {
+    if (palette.length <= 1 || index < 0 || index >= palette.length) return
+    setPalette((current) => current.filter((_, i) => i !== index))
+    setColorIndex((current) => current > index ? current - 1 : current === index ? Math.min(index, palette.length - 2) : current)
   }
 
   async function onPickReference(file: File) {
@@ -389,8 +413,9 @@ export default function EditorPage() {
             onSelect={setColorIndex}
             tool={tool}
             setTool={setTool}
-            customHex={customHex}
-            onChangeCustomHex={onChangeCustomHex}
+            onChangeColor={onChangePaletteColor}
+            onAddColor={addPaletteColor}
+            onRemoveColor={removePaletteColor}
           />
         </div>
 

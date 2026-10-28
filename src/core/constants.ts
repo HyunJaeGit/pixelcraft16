@@ -8,8 +8,8 @@ export const PALETTE_16: readonly string[] = [
   '#8b4513', '#f4a460', '#008080', '#2f4f4f',
 ] as const
 
-// Custom palette slots (1개만)
-export const CUSTOM_PALETTE_SLOTS = 1 as const
+// Bound imported palettes to keep the UI manageable.
+export const MAX_PALETTE_COLORS = 256 as const
 export const DEFAULT_CUSTOM_COLOR = '#000000' as const
 
 export const CANVAS_SIZES = [16, 32, 64, 128] as const

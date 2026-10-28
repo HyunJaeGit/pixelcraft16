@@ -21,6 +21,13 @@ export const TEXT = {
   importJson: { ko: 'JSON 불러오기', en: 'Import JSON' },
 
   paletteTitle: { ko: '팔레트', en: 'Palette' },
+  color: { ko: '색상', en: 'Color' },
+  colorEditor: { ko: '색상 편집', en: 'Color editor' },
+  colorPicker: { ko: '색상 선택기', en: 'Color picker' },
+  updateColor: { ko: '선택 색 변경', en: 'Update selected' },
+  addColor: { ko: '새 색 추가', en: 'Add color' },
+  removeColor: { ko: '선택 색 삭제', en: 'Remove selected' },
+  invalidHex: { ko: '올바른 HEX 형식이 아닙니다. 예: #33AAFF', en: 'Enter a valid HEX color, e.g. #33AAFF.' },
   customTitle: { ko: '커스텀(1칸)', en: 'Custom (1 slot)' },
   hexLabel: { ko: 'HEX (#RRGGBB)', en: 'HEX (#RRGGBB)' },
 

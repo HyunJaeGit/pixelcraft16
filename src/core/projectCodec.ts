@@ -1,5 +1,5 @@
 // src/core/projectCodec.ts
-import { PROJECT_VERSION, PALETTE_16, CUSTOM_PALETTE_SLOTS, DEFAULT_CUSTOM_COLOR } from './constants'
+import { PROJECT_VERSION, PALETTE_16, MAX_PALETTE_COLORS, DEFAULT_CUSTOM_COLOR } from './constants'
 
 export type ProjectDTO = {
   version: number
@@ -18,9 +18,7 @@ export type ProjectData = {
 }
 
 function defaultPalette(): string[] {
-  const pal = [...PALETTE_16]
-  for (let i = 0; i < CUSTOM_PALETTE_SLOTS; i++) pal.push(DEFAULT_CUSTOM_COLOR)
-  return pal
+  return [...PALETTE_16, DEFAULT_CUSTOM_COLOR]
 }
 
 export function makeNewProject(width: number, height: number, fillArgb = 0x00000000): ProjectData {
@@ -45,11 +43,17 @@ export function encodeProject(project: ProjectData): ProjectDTO {
   }
 }
 
-function normalizePalette(palette: string[]): string[] {
+function normalizePalette(palette: unknown[]): string[] {
   // v1(16색)도 받아서 custom 1칸을 뒤에 붙여줌
-  if (palette.length === 16) return [...palette, DEFAULT_CUSTOM_COLOR]
-  if (palette.length === 16 + CUSTOM_PALETTE_SLOTS) return palette.slice()
-  throw new Error('Invalid project: palette length')
+  if (palette.length < 1 || palette.length > MAX_PALETTE_COLORS) {
+    throw new Error(`Invalid project: palette length (expected 1-${MAX_PALETTE_COLORS})`)
+  }
+  if (palette.some((color) => typeof color !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(color))) {
+    throw new Error('Invalid project: palette color')
+  }
+  const normalized = palette.map((color) => (color as string).toLowerCase())
+  if (normalized.length === 16) normalized.push(DEFAULT_CUSTOM_COLOR)
+  return normalized
 }
 
 export function decodeProject(input: unknown): ProjectData {
@@ -73,7 +77,7 @@ export function decodeProject(input: unknown): ProjectData {
     pixels[i] = v >>> 0
   }
 
-  const palette = normalizePalette(p.palette as string[])
+  const palette = normalizePalette(p.palette)
 
   return {
     version: p.version,
